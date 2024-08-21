@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: spring-security-jwt
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+        web: TRACE
+        authentication: TRACE
