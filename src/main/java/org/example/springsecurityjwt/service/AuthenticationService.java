@@ -13,6 +13,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +28,11 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest registerRequest) {
+        // Рандомная реализация раздачи ролей для тестирования функциональности
+        List<Role> availableRoles = Arrays.asList(Role.USER, Role.ADMIN);
+        Random random = new Random();
+        Role randomRole = availableRoles.get(random.nextInt(availableRoles.size()));
+
         User user = User.builder()
                        .firstName(registerRequest.getFirstName())
                        .lastName(registerRequest.getLastName())
